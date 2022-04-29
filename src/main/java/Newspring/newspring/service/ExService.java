@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @Slf4j
+
 public class ExService implements UserDetailsService {
     private final ExRepository repository;
 
