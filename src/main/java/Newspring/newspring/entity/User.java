@@ -16,16 +16,16 @@ public class User {
     @javax.persistence.Id
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
     private String email;
     private String password;
     private String role;
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 }
