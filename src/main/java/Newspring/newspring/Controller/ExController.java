@@ -19,6 +19,10 @@ import lombok.extern.slf4j.Slf4j;
 public class ExController {
     private final ExService service;
 
+    @GetMapping("/MainPage")
+    public String MainPage() {
+        return "MainPage";
+    }
     @GetMapping("/signUp")
     public String signUpForm() {
         return "signup";
