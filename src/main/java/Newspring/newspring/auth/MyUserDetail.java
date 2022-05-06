@@ -9,11 +9,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 import Newspring.newspring.entity.User;
 
 public class MyUserDetail implements UserDetails {
+    private String id;
+
+    private String name;
     private String email;
     private String password;
     private String role;
 
     public MyUserDetail(User user) {
+        this.id = String.valueOf(user.getId());
+        this.name = user.getName();
         this.email = user.getEmail();
         this.password = user.getPassword();
         this.role = "ROLE_" + user.getRole();
@@ -23,7 +28,9 @@ public class MyUserDetail implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority(this.role));
     }
-
+    public String getId() {
+        return this.id;
+    }
     @Override
     public String getPassword() {
         return this.password;
@@ -31,7 +38,7 @@ public class MyUserDetail implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.email;
+        return this.name;
     }
 
     @Override
