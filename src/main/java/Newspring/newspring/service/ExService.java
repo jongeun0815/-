@@ -27,6 +27,11 @@ public class ExService implements UserDetailsService {
     public void joinUser(User user){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setUsername(user.getUsername());
+        user.setUserId(user.getUserId());
+        user.setEmail(user.getEmail());
+        user.setPhoneNumber(user.getPhoneNumber());
+
         repository.saveUser(user);
     }
 

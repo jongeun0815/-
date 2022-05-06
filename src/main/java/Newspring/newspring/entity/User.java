@@ -17,10 +17,12 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-    private String email;
+    private String username;
+    private String userId;
     private String password;
+    private String email;
+    private String phoneNumber;
     private String role;
-    private String name;
 
     public void setId(Long id) {
         this.id = id;
@@ -28,9 +30,5 @@ public class User {
 
     public Long getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 }
