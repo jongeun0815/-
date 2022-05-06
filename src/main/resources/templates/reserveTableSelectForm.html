@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+
+<div class="container text-center my-4">
+    <h1 class="my-4">테이블 선택</h1>
+    <form method="POST" th:action="@{/reserve}" class="form-control">
+
+        <input type="hidden" th:value="${date}" id="reserveDateId" name="reserveDateId">
+        <input type="hidden" th:value="${time}" id="reserveTimeId" name="reserveTimeId">
+
+        <div th:each="t : ${table}" class="form-check form-check-inline">
+            <label th:for="${t.tableNum}" th:id="${t.id}" class="form-check-label"></label>
+            <input type="radio"  th:value="${t.tableNum}" th:id="${t.id}" class="form-check-input">
+        </div>
+        <button type="submit" class="btn btn-primary">선택</button>
+
+    </form>
+</div>
+
+</body>
+</html>
