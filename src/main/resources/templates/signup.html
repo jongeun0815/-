@@ -1,88 +1,3 @@
-package Newspring.newspring.entity;
-
-
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-
-
-@Entity
-@Getter
-@Setter
-public class User {
-@javax.persistence.Id
-@Id
-@GeneratedValue
-private Long id;
-private String username;
-private String userId;
-private String password;
-private String email;
-private String phoneNumber;
-private String role;
-
-public void setId(Long id) {
-this.id = id;
-}
-
-public Long getId() {
-return id;
-}
-}
-
-===========
-
-package Newspring.newspring.service;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import Newspring.newspring.auth.MyUserDetail;
-import Newspring.newspring.entity.User;
-import Newspring.newspring.repository.ExRepository;
-import lombok.RequiredArgsConstructor;
-
-@Service
-@Slf4j
-
-public class ExService implements UserDetailsService {
-private final ExRepository repository;
-
-public ExService(ExRepository repository){
-this.repository = repository;
-}
-@Transactional
-public void joinUser(User user){
-BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-user.setPassword(passwordEncoder.encode(user.getPassword()));
-user.setUsername(user.getUsername());
-user.setUserId(user.getUserId());
-user.setEmail(user.getEmail());
-user.setPhoneNumber(user.getPhoneNumber());
-
-repository.saveUser(user);
-}
-
-@Override
-public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-log.info(email);
-//여기서 받은 유저 패스워드와 비교하여 로그인 인증
-User user = repository.findUserByEmail(email);
-return new MyUserDetail(user);
-}
-}
-
-===================
-
 <!--회원가입 페이지-->
 <!--signup.html-->
 
@@ -226,7 +141,7 @@ return new MyUserDetail(user);
                     <div class="row g-3">
                         <div class="col-12">
                             <label for="username" class="form-label">이름</label>
-                            <input type="text" class="form-control" id="username" placeholder="" value="" required>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="" value="" required>
                             <div class="invalid-feedback">
                                 Valid first name is required.
                             </div>
