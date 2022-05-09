@@ -1,10 +1,10 @@
 package Newspring.newspring.repository.custom;
 
-import Newspring.newspring.entity.Table;
+import Newspring.newspring.entity.HasTable;
 
 public interface TableCustomRepository {
 
-    Table findTable(Integer tableNum);
+    HasTable findTable(Integer tableNum);
 
-    Table findTableDisabled(Integer tableNum);
+    HasTable findTableDisabled(Integer tableNum);
 }

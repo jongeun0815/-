@@ -3,7 +3,7 @@ package Newspring.newspring.repository.custom;
 import Newspring.newspring.entity.AvailableDate;
 import Newspring.newspring.entity.AvailableTime;
 import Newspring.newspring.entity.ReserveItem;
-import Newspring.newspring.entity.Table;
+import Newspring.newspring.entity.HasTable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -38,11 +38,11 @@ public class ReserveItemCustomRepositoryImpl implements ReserveItemCustomReposit
     }
 
     @Override
-    public List<Table> findAvailableTables() {
+    public List<HasTable> findAvailableTables() {
         return em.createQuery(
                         "select v " +
-                                "from Table v " +
-                                "where v.limit > 0 and v.enabled = true", Table.class
+                                "from HasTable v " +
+                                "where v.limit > 0 and v.enabled = true", HasTable.class
                 )
                 .getResultList();
     }

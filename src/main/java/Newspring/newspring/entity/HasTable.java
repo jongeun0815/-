@@ -12,9 +12,9 @@ import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name = "table")
+@Table(name = "db_table")
 @Getter
-public class Table extends BaseEntity{
+public class HasTable extends BaseEntity{
 
     @Id @GeneratedValue
     @Column(name = "table_num",nullable = false)
@@ -37,7 +37,7 @@ public class Table extends BaseEntity{
     }
 
     @Builder(builderMethodName = "createTable")
-    public Table(Integer tableNum, Integer limit) {
+    public HasTable(Integer tableNum, Integer limit) {
         this.tableNum = tableNum;
         this.limit = limit;
 
