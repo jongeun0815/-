@@ -16,7 +16,8 @@ import java.time.LocalDateTime;
 @Getter
 public class HasTable extends BaseEntity{
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "table_num",nullable = false)
     private Integer tableNum;
 
@@ -28,6 +29,9 @@ public class HasTable extends BaseEntity{
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
+
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 
     @Type(type="yes_no")
     private boolean enabled = true;

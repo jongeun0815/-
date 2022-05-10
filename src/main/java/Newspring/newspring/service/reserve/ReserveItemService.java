@@ -4,9 +4,11 @@ import Newspring.newspring.dto.reserve.AvailableDateDto;
 import Newspring.newspring.dto.reserve.AvailableTimeDto;
 import Newspring.newspring.dto.reserve.ReserveItemSimpleDto;
 import Newspring.newspring.dto.table.TableReserveDto;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface ReserveItemService {
 
     List<AvailableDateDto> getAvailableDates();

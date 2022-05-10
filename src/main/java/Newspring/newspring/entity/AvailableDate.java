@@ -24,6 +24,10 @@ public class AvailableDate {
     @Column(name = "available_data_id")
     private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
+
     @Column(nullable = false)
     private String date;
 
@@ -38,6 +42,10 @@ public class AvailableDate {
 
     public void setEnabled(boolean flag) {
         this.enabled = flag;
+    }
+    public void addRestaurant(Restaurant restaurant){
+        this.restaurant = restaurant;
+        restaurant.getAvailableDates().add(this);
     }
 
     @Builder(builderMethodName = "createAvailableDate")

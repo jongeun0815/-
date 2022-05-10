@@ -27,6 +27,10 @@ public class ReserveItem extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
+
     @Enumerated(value = EnumType.STRING)
     private ReserveStatus status = ReserveStatus.COMPLETE;
 
@@ -39,8 +43,9 @@ public class ReserveItem extends BaseEntity {
 
     @Builder(builderMethodName = "createReserveItem")
     public ReserveItem(
-            User user, ReserveStatus status, String reserveDate, int reserveTime, int tableNum) {
+            User user, Restaurant restaurant, ReserveStatus status, String reserveDate, int reserveTime, int tableNum) {
         this.user = user;
+        this.restaurant = restaurant;
         this.status = status;
         this.reserveTime = reserveTime;
         this.reserveDate = reserveDate;
