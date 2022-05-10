@@ -33,12 +33,11 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	testImplementation 'org.springframework.security:spring-security-test'
-	/* ModelMapper */
-	compile 'org.modelmapper:modelmapper:3.1.0'
-	/* MapStruct */
-	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+	// https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+	implementation 'org.modelmapper:modelmapper:3.1.0'
 
-	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.1.Final'
+	compile('org.modelmapper:modelmapper:3.1.0')
+
 }
 
 tasks.named('test') {
