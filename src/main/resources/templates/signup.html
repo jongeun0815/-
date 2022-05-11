@@ -45,6 +45,18 @@
         .signup {
             margin: 0px 170px;
         }
+
+        #idBtn {
+            margin-left: 5px;
+            height: 40px;
+            border: dimgray;
+            border-radius: 5px;
+        }
+
+        #idBtn:hover {
+            color: #eeeeee;
+            background-color: dimgray;
+        }
     </style>
 
 </head>
@@ -112,23 +124,32 @@
                     <div class="col-12">
                         <label for="userId" class="form-label">아이디</label>
                         <div class="input-group has-validation">
-                            <span class="input-group-text">@</span>
+                            <span class="input-group-text" id="idIcon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                </svg>
+                            </span>
                             <input type="text" class="form-control" id="userId" placeholder="" required>
-                            <div class="invalid-feedback">
-                                아이디를 입력하세요.
+                            <div>
+                                <div class="invalid-feedback">
+                                    아이디를 입력하세요.
+                                </div>
+                                <button id="idBtn">중복확인</button>
                             </div>
+
                         </div>
                     </div>
                     <div class="col-12">
                         <label for="password" class="form-label">비밀번호</label>
-                        <input type="text" class="form-control" id="password" placeholder="" value="" required>
+                        <input type="text" class="form-control" id="password" placeholder="6자리 이상으로 설정해 주세요." value="" required>
                         <div class="invalid-feedback">
                             비밀번호를 입력하세요.
                         </div>
                     </div>
                     <div class="col-12">
                         <label for="email" class="form-label">이메일</label>
-                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                        <input type="email" class="form-control" id="email" placeholder="">
                         <div class="invalid-feedback">
                             이메일을 입력하세요.
                         </div>
@@ -159,5 +180,23 @@
 <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <script src="form-validation.js"></script>
+
+//제이쿼리 cdn
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </body>
+<script>
+    // let id = $('#userId');
+    $(document).ready(function(){
+        $('#idBtn').click(function () {
+            if ($("#userId").val() == '')
+                alert("아이디를 입력해 주세요.");
+            else if ($("#userId").val() == 'admin')
+                alert("사용중인 아이디입니다.");
+            else {
+                alert("사용 가능한 아이디입니다.");
+                $('#idIcon').css('color', 'green');
+            }
+        });
+    });
+</script>
 </html>
