@@ -44,6 +44,15 @@
             width: 500px;
             margin: auto;
         }
+
+        .forgotPassword {
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        #loginButton {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -84,40 +93,6 @@
         </div>
     </nav>
 </header>
-
-<!--<div class="loginModal" tabindex="-1" role="dialog" id="modalSignin" style="background-color: blue">-->
-<!--    <div class="modal-dialog" role="document">-->
-<!--        <div class="modal-content rounded-5 shadow">-->
-<!--            <div class="modal-header p-5 pb-4 border-bottom-0">-->
-<!--                &lt;!&ndash; <h5 class="modal-title">Modal title</h5> &ndash;&gt;-->
-<!--                <h2 class="fw-bold mb-0">로그인</h2>-->
-<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--            </div>-->
-
-<!--            <div class="modal-body p-5 pt-0">-->
-<!--                <form class="">-->
-<!--                    <div class="form-floating mb-3">-->
-<!--&lt;!&ndash;                        <span class="input-group-text">@</span>&ndash;&gt;-->
-<!--                        <input type="id" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com">-->
-<!--                        <label for="floatingInput">아이디를 입력하세요.</label>-->
-<!--                    </div>-->
-<!--                    <div class="form-floating mb-3">-->
-<!--                        <input type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password">-->
-<!--                        <label for="floatingPassword">비밀번호를 입력하세요.</label>-->
-<!--                    </div>-->
-<!--                    <hr class="my-4">-->
-<!--                    <link rel="stylesheet" href="">-->
-<!--                    <small class="text-muted">비밀번호 찾기</small>-->
-
-<!--                    <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">로그인하기</button>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <footer class="my-5 pt-5 text-muted text-center text-small">-->
-<!--        <p class="mb-1">&copy; 2022 KGU Software Engineering</p>-->
-<!--    </footer>-->
-<!--</div>-->
 <div class="loginModal">
     <div class="modal-content rounded-5 shadow">
         <div class="modal-header p-5 pb-4 border-bottom-0">
@@ -130,18 +105,19 @@
             <form class="">
                 <div class="form-floating mb-3">
                     <!--                        <span class="input-group-text">@</span>-->
-                    <input type="id" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">아이디를 입력하세요.</label>
+                    <input type="id" class="form-control rounded-4" id="userId" placeholder="Id">
+                    <label for="userId">아이디를 입력하세요.</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">비밀번호를 입력하세요.</label>
+                    <input type="password" class="form-control rounded-4" id="userPassword" placeholder="Password">
+                    <label for="userPassword">비밀번호를 입력하세요.</label>
                 </div>
                 <hr class="my-4">
                 <link rel="stylesheet" href="">
-                <small class="text-muted">비밀번호 찾기</small>
-
-                <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">로그인하기</button>
+                <div class="forgotPassword">
+                    <a href="" onclick="forgotPassword()">비밀번호 찾기</a>
+                </div>
+                <button id="loginButton" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">로그인하기</button>
             </form>
         </div>
     </div>
@@ -150,9 +126,50 @@
     <p class="mb-1">&copy; 2022 KGU Software Engineering</p>
 </footer>
 
-
 <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-
+//제이쿼리 cdn
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </body>
+<script>
+    // let id = $('#userId');
+    // let pw = $('#userPassword');
+    // let btn = $('#loginButton');
+
+    // function login() {
+    //     if ($("#userId").val() == "admin" && $("#userPassword").val() == "password") {
+    //         alert("로그인 성공");
+    //     } else {
+    //         alert("로그인 실패");
+    //     }
+    // }
+    function forgotPassword() {
+        alert("비밀번호 찾기");
+    }
+    $(document).ready(function(){
+        $('#loginButton').click(function(){
+            if ($("#userId").val() == "admin" && $("#userPassword").val() == "00") {
+                alert("로그인 성공");
+            }
+            //아이디가 공백이면 알림창 출력
+            else if($('#userId').val() == ''){
+                alert("아이디를 입력하세요.");
+                $('#userId').focus();
+            }
+            //비밀번호가 공백이면 알림창 출력
+            else if($('#userPassword').val() == ''){
+                alert("비밀번호를 입력하세요.");
+                $('#userPassword').focus();
+            }
+            else {
+                alert("로그인 실패");
+            }
+
+
+        });
+    });
+
+
+
+</script>
 </html>
