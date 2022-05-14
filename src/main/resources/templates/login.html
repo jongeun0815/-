@@ -35,8 +35,6 @@
     <style>
         .loginModal {
             margin-top: 100px;
-            /*margin-left: 500px;*/
-            /*margin-right: 500px;*/
             margin-bottom: 80px;
         }
 
@@ -52,6 +50,20 @@
 
         #loginButton {
             cursor: pointer;
+        }
+
+        .findPasswordModal {
+            display: none;
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            /*margin-top: 100px;*/
+            /*margin-bottom: 80px;*/
+            top:50%;
+            left: 50%;
+            margin: -250px 0 0 -250px;
+            background:#eee;
+            z-index: 2;
         }
     </style>
 </head>
@@ -98,13 +110,11 @@
         <div class="modal-header p-5 pb-4 border-bottom-0">
             <!-- <h5 class="modal-title">Modal title</h5> -->
             <h2 class="fw-bold mb-0">로그인</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body p-5 pt-0">
-            <form class="">
+            <div class="">
                 <div class="form-floating mb-3">
-                    <!--                        <span class="input-group-text">@</span>-->
                     <input type="id" class="form-control rounded-4" id="userId" placeholder="Id">
                     <label for="userId">아이디를 입력하세요.</label>
                 </div>
@@ -115,13 +125,90 @@
                 <hr class="my-4">
                 <link rel="stylesheet" href="">
                 <div class="forgotPassword">
-                    <a href="" onclick="forgotPassword()">비밀번호 찾기</a>
+                    <!-- Button trigger modal -->
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        아이디 찾기
+                    </a>
                 </div>
-                <button id="loginButton" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">로그인하기</button>
-            </form>
+                <button id="loginButton" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit" onclick="login()">로그인하기</button>
+            </div>
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">아이디 찾기</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-body">
+                    <div class="form-floating mb-3">
+                        <!--                        <span class="input-group-text">@</span>-->
+                        <input type="name" class="form-control rounded-4" id="name">
+                        <label for="name">이름을 입력하세요.</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="phonenumber" class="form-control rounded-4" id="phoneNumber">
+                        <label for="phoneNumber">핸드폰 번호를 입력하세요.</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <!--                        <span class="input-group-text">@</span>-->
+                        <input type="email" class="form-control rounded-4" id="email">
+                        <label for="email">이메일을 입력하세요.</label>
+                    </div>
+                    <hr class="my-4">
+                    <link rel="stylesheet" href="">
+                    <button id="findPasswordBtn" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit" onclick="findId()">아이디 찾기</button>
+                </div>
+            </div>
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                <button type="button" class="btn btn-primary">Understood</button>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--<div class="findPasswordModal">-->
+<!--&lt;!&ndash;<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">&ndash;&gt;-->
+<!--    <div class="modal-content rounded-5 shadow">-->
+<!--        <div class="modal-header p-5 pb-4 border-bottom-0">-->
+<!--            <h2 class="fw-bold mb-0">비밀번호 찾기</h2>-->
+<!--            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--        </div>-->
+
+<!--        <div class="modal-body p-5 pt-0">-->
+<!--            <form class="">-->
+<!--                <div class="form-floating mb-3">-->
+<!--                    &lt;!&ndash;                        <span class="input-group-text">@</span>&ndash;&gt;-->
+<!--                    <input type="id" class="form-control rounded-4" id="Id" placeholder="Id">-->
+<!--                    <label for="userId">아이디를 입력하세요.</label>-->
+<!--                </div>-->
+<!--                <div class="form-floating mb-3">-->
+<!--                    <input type="phonenumber" class="form-control rounded-4" id="phoneNumber" placeholder="Password">-->
+<!--                    <label for="phoneNumber">핸드폰 번호를 입력하세요.</label>-->
+<!--                </div>-->
+<!--                <div class="form-floating mb-3">-->
+<!--                    &lt;!&ndash;                        <span class="input-group-text">@</span>&ndash;&gt;-->
+<!--                    <input type="email" class="form-control rounded-4" id="email" placeholder="Id">-->
+<!--                    <label for="email">이메일을 입력하세요.</label>-->
+<!--                </div>-->
+<!--                <hr class="my-4">-->
+<!--                <link rel="stylesheet" href="">-->
+<!--                <button id="findPasswordBtn" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">비밀번호 찾기</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2022 KGU Software Engineering</p>
 </footer>
@@ -143,12 +230,60 @@
     //         alert("로그인 실패");
     //     }
     // }
-    function forgotPassword() {
-        alert("비밀번호 찾기");
+    function modal() {
+        document.querySelector('.findPasswordModal').style.display ='block';
+    }
+    $('#btn').click(function() {
+           modal();
+    });
+
+    function offModal() {
+        document.querySelector('.modal_wrap').style.display ='none';
+    }
+    document.querySelector('.btn-close').addEventListener('click', offModal());
+
+    function login() {
+        $('#loginButton').click(function(){
+            if ($("#userId").val() == "admin" && $("#userPassword").val() == "password") {
+                alert("로그인 성공");
+            }
+            //아이디가 공백이면 알림창 출력
+            else if($('#userId').val() == ''){
+                alert("아이디를 입력하세요.");
+                $('#userId').focus();
+            }
+            //비밀번호가 공백이면 알림창 출력
+            else if($('#userPassword').val() == ''){
+                alert("비밀번호를 입력하세요.");
+                $('#userPassword').focus();
+            }
+            else {
+                alert("로그인 실패");
+            }
+
+
+        });
+    }
+
+    function findId() {
+    //    ajax로 아이디 찾기
+        const ajaxResult = true;
+        if (ajaxResult){
+            let afterFindId = '<div>당신의 아이디는 ooo입니다.</div>';
+            $('#modal-body').html(afterFindId);
+        }
+        else {
+            alert('잘못된 정보입니다.')
+        }
+
     }
     $(document).ready(function(){
+        $('#btn').click(function () {
+
+            }
+        );
         $('#loginButton').click(function(){
-            if ($("#userId").val() == "admin" && $("#userPassword").val() == "00") {
+            if ($("#userId").val() == "admin" && $("#userPassword").val() == "password") {
                 alert("로그인 성공");
             }
             //아이디가 공백이면 알림창 출력
@@ -170,6 +305,11 @@
     });
 
 
-
+    // const myModal = document.getElementById('myModal')
+    // const myInput = document.getElementById('myInput')
+    //
+    // myModal.addEventListener('shown.bs.modal', () => {
+    //     myInput.focus()
+    // })
 </script>
 </html>
