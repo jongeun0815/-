@@ -4,22 +4,54 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <script src="jquery/jquery.js"></script>
+    <link rel="stylesheet" href="jquery/jquery.timepicker.css"/>
+    <script src="jquery/jquery.timepicker.js"></script>
 </head>
 <body>
-<div class="container text-center my-4">
-    <h1 class="my-4">예약가능시간 선택</h1>
+<div class="modal modal-sheet position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSheet">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title">예약 시간 선택</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body py-0">
+                <label for="time">선택한 예약 날짜 : **날짜 값 불러올 예정**</label>
+                <p><input type="text" id="selecttime" name="disableTimeRangesExample" class="time ui-timepicker-input" style="width: 200px">
+                    선택한 예약시간 : <span id="onselectTarget" style="margin-left: 20px"> </span></p>
+            </div>
+            <!-- <p>
+              <input id="onselectExample" type="text" class="time ui-timepicker-input" autocomplete="off">
 
-    <form method="GET" th:action="@{/reserve/{param1}/table()}" class="form-control">
-        <input type="hidden" th:value="${date}" name="date" id="date">
+             </p> -->
 
-        <div class="form-check form-check-inline">
-            <select id="time" name="time" class="form-select">
-                <option value="">====== 시간를 선택하세요 ======</option>
-                <option th:each="t : ${times}" th:value="${t.id}" th:text="${t.time}"></option>
-            </select>
+<!--   예진 시간 선택 폼
+                <div class="container text-center my-4">-->
+<!--                <h1 class="my-4">예약가능시간 선택</h1>-->
+
+<!--                <form method="GET" th:action="@{/reserve/{param1}/table()}" class="form-control">-->
+<!--                    <input type="hidden" th:value="${date}" name="date" id="date">-->
+
+<!--                    <div class="form-check form-check-inline">-->
+<!--                        <select id="time" name="time" class="form-select">-->
+<!--                            <option value="">====== 시간를 선택하세요 ======</option>-->
+<!--                            <option th:each="t : ${times}" th:value="${t.id}" th:text="${t.time}"></option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                    <button type="submit" class="btn btn-primary mx-2">선택</button>-->
+<!--                </form>-->
+<!--            </div>-->
+            <div class="modal-footer flex-column border-top-0">
+                <button type="button" class="btn btn-lg btn-primary w-100 mx-0 mb-2">테이블 예약하기</button>
+                <button type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal">취소</button>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary mx-2">선택</button>
-    </form>
+    </div>
 </div>
+
 </body>
 </html>

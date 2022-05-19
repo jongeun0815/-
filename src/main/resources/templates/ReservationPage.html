@@ -34,19 +34,25 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <script>
-     $(function() {
-  $('input[name="selectdate"]').daterangepicker({
-    singleDatePicker: true,
-    showDropdowns: true,
-    minMonth: 2022,
-    maxMonth: parseInt(moment().format('MMMM'),1)
-  });
-});
-</script>
-    <script>
-  document.getElementById('currentTime').value = new Date().toISOString().slice(11, 16);
-</script>
+
+    <style>
+        div.reservation_form{
+            margin: 0px 50px 0px 50px;
+        }
+    </style>
+
+<!--    <script>-->
+<!--     $(function() {-->
+<!--  $('input[name="selectdate"]').daterangepicker({-->
+<!--    singleDatePicker: true,-->
+<!--    showDropdowns: true,-->
+<!--    minMonth: 2022,-->
+<!--    maxMonth: parseInt(moment().format('MMMM'),1)-->
+<!--  });-->
+<!--});-->
+<!--</script>-->
+<!--  document.getElementById('currentTime').value = new Date().toISOString().slice(11, 16);-->
+
 
 </head>
 <body>
@@ -93,7 +99,7 @@
         <br>
         <p class="lead">"*"표시가 붙은 입력란은 필수입력란입니다. 내용을 꼭 기재해주세요.</p>
     </div>
-    <div class="reservation_inputform">
+    <div class="reservation_form">
         <h4 class="mb-3">예약자 정보 입력</h4>
         <form class="needs-validation" novalidate>
             <div class="row g-3">
@@ -123,27 +129,27 @@
                         </div>
                     </div>
                 </div>
-            <div class="col-12">
-                <label for="reservationdate" class="form-label"> *예약날짜</label>
-                <div class="input-group has-validation">
-                    <input type="text" class="form-control" name="selectdate" id="reservationdate" placeholder="" required>
-                    <div class="invalid-feedback">
-                        원하시는 예약날짜를 선택하세요.
-                    </div>
-                    <div><input type="submit" value="Submit"></div>
-                </div>
-            </div>
-            <div class="col-12">
-                <label for="currentTime" class="form-label"> *예약날짜</label>
-                <div class="input-group has-validation">
-                    <input type="time" class="form-control" id="currentTime" placeholder="" required>
-                    <div class="invalid-feedback">
-                        원하시는 예약시간을 선택하세요.
-                    </div>
-                    <div><input type="submit" value="Submit"></div>
-                </div>
+<!--            <div class="col-12">-->
+<!--                <label for="reservationdate" class="form-label"> *예약날짜</label>-->
+<!--                <div class="input-group has-validation">-->
+<!--                    <input type="text" class="form-control" name="selectdate" id="reservationdate" placeholder="" required>-->
+<!--                    <div class="invalid-feedback">-->
+<!--                        원하시는 예약날짜를 선택하세요.-->
+<!--                    </div>-->
+<!--                    <div><input type="submit" value="Submit"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-12">-->
+<!--                <label for="currentTime" class="form-label"> *예약날짜</label>-->
+<!--                <div class="input-group has-validation">-->
+<!--                    <input type="time" class="form-control" id="currentTime" placeholder="" required>-->
+<!--                    <div class="invalid-feedback">-->
+<!--                        원하시는 예약시간을 선택하세요.-->
+<!--                    </div>-->
+<!--                    <div><input type="submit" value="Submit"></div>-->
+<!--                </div>-->
 
-            </div>
+<!--            </div>-->
         </form>
     </div>
 </main>
